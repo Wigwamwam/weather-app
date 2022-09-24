@@ -69,6 +69,14 @@ group :development do
   # gem "spring"
 end
 
+gem 'open-uri'
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'database_cleaner'
+end
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
