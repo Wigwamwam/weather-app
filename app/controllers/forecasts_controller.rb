@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'weatherapi/client'
+
 
 class ForecastsController < ApplicationController
   def new
@@ -8,11 +10,10 @@ class ForecastsController < ApplicationController
   def create
     @forecast = Forecast.new(forecast_params)
     if @forecast.valid?
-      @forecast.fetch_values
-      if @forecast.country.include?('UK')
-        @forecast.save
-        redirect_to forecast_path(@forecast)
-      end
+      response = Weatherapi::Client.new.fetch_weather(@forecast.postcode)
+      @forecast.set_from_weather_api(response)
+      @forecast.save
+      redirect_to forecast_path(@forecast)
     else
       render :new, status: :unprocessable_entity
     end
