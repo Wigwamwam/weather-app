@@ -38,6 +38,17 @@ RSpec.describe 'forecastapi', type: :request do
     end
 
     context 'with a dodgy postcode' do
+      it 'if successful it does not store instance' do
+        post forecasts_path, params: {
+          forecast: {
+            postcode: 'Gu345Rb',
+            hot: 40,
+            cold: 10
+          }
+        }
+
+        expect(response.status).to eq(422)
+      end
     end
   end
 
