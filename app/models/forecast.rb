@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class Forecast < ApplicationRecord
+  has_many :hourly_temp
   validates :postcode, presence: { message: "Postcode can't be blank." }
   validates :postcode,
             format: { with: /[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKS-UW])\ [0-9][ABD-HJLNP-UW-Z]{2}/i,
