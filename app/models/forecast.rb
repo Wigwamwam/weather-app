@@ -14,9 +14,9 @@ class Forecast < ApplicationRecord
   def set_from_weather_api(response)
     self.city = response['location']['name']
     self.country = response['location']['country']
-    self.max_temp = response['forecast']['forecastday'][0]['day']['maxtemp_c'].to_f
-    self.min_temp = response['forecast']['forecastday'][0]['day']['mintemp_c'].to_f
-    self.temp = set_threshold(max_temp, hot, cold)
+    # self.max_temp = response['forecast']['forecastday'][0]['day']['maxtemp_c'].to_f
+    # self.min_temp = response['forecast']['forecastday'][0]['day']['mintemp_c'].to_f
+    # self.temp = set_threshold(max_temp, hot, cold)
   end
 
   private
