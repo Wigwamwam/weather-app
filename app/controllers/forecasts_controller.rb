@@ -8,7 +8,6 @@ class ForecastsController < ApplicationController
 
   def create
     @forecast = Forecast.new(forecast_params)
-
     if @forecast.valid?
       response = Weatherapi::Client.new.fetch_weather(@forecast.postcode)
       @forecast.set_from_weather_api(response)
