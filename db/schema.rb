@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_125218) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_143201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_125218) do
   end
 
   create_table "hourly_temps", force: :cascade do |t|
+    t.integer "hour_00"
     t.integer "hour_01"
     t.integer "hour_02"
     t.integer "hour_03"
@@ -49,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_125218) do
     t.integer "hour_21"
     t.integer "hour_22"
     t.integer "hour_23"
-    t.integer "hour_24"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "max_temp"
