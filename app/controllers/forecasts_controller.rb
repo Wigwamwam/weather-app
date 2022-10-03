@@ -14,15 +14,15 @@ class ForecastsController < ApplicationController
       @forecast.set_from_weather_api(response)
       @forecast.save
       days = 0
-      while days < 6 do
-        hourly_response = Weatherapi::Client.new.fetch_future_weather(postcode, days)
+      # if API permitted forecast dates
+      # while days < 6 do
+        hourly_response = Weatherapi::Client.new.fetch_future_weather(@forecast.postcode, days)
         @hourly = HourlyTemp.new
         @hourly.forecast = @forecast
         @hourly.hourly_weather_breakdown(hourly_response)
         @hourly.save
-        days += 1
-      end
-
+      #   days += 1
+      # end
       redirect_to forecast_path(@forecast)
     else
       render :new, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class ForecastsController < ApplicationController
 
   def show
     @forecast = Forecast.find(params[:id])
-    @hourly_temps_1 = HourlyTemp.where(forecast: @forecast)
+    @hourly_temp_1 = HourlyTemp.where(forecast: @forecast)
   end
 
   private

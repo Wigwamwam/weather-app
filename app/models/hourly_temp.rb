@@ -5,7 +5,6 @@ class HourlyTemp < ApplicationRecord
 
   def hourly_weather_breakdown(hourly_response)
     request = hourly_response['forecast']['forecastday']
-
     self.max_temp = request[0]['day']['maxtemp_c'].to_f
     self.min_temp = request[0]['day']['mintemp_c'].to_f
     self.hour_00 = request[0]['hour'][0]['temp_c'].to_f
