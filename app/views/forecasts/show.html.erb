@@ -1,42 +1,42 @@
 <div class="jumbotron m-3">
-  <h1 class="display-4">City: <%= @forecast.city %>!</h1>
-  <p><%= @forecast.postcode %></p>
-  <p><%= @forecast.country %></p>
+  <p class="display-4">The Weather in <strong><%= @forecast.city %></strong></p>
 
-  <h2>Hourly Breakdown</h2>
-  <p>12:00am: <%= @hourly_temp_1[0].hour_00 %></p>
-  <p>01:00am: <%= @hourly_temp_1[0].hour_01 %></p>
-  <p>02:00am: <%= @hourly_temp_1[0].hour_02 %></p>
-  <p>03:00am: <%= @hourly_temp_1[0].hour_03 %></p>
-  <p>04:00am: <%= @hourly_temp_1[0].hour_04 %></p>
-  <p>05:00am: <%= @hourly_temp_1[0].hour_05 %></p>
-  <p>06:00am: <%= @hourly_temp_1[0].hour_06 %></p>
-  <p>07:00am: <%= @hourly_temp_1[0].hour_07 %></p>
-  <p>08:00am: <%= @hourly_temp_1[0].hour_08 %></p>
-  <p>09:00am: <%= @hourly_temp_1[0].hour_09 %></p>
-  <p>10:00am: <%= @hourly_temp_1[0].hour_10 %></p>
-  <p>11:00am: <%= @hourly_temp_1[0].hour_11 %></p>
-  <p>12:00am: <%= @hourly_temp_1[0].hour_12 %></p>
-  <p>13:00am: <%= @hourly_temp_1[0].hour_13 %></p>
-  <p>14:00am: <%= @hourly_temp_1[0].hour_14 %></p>
-  <p>15:00am: <%= @hourly_temp_1[0].hour_15 %></p>
-  <p>16:00am: <%= @hourly_temp_1[0].hour_16 %></p>
-  <p>17:00am: <%= @hourly_temp_1[0].hour_17 %></p>
-  <p>18:00am: <%= @hourly_temp_1[0].hour_18 %></p>
-  <p>19:00am: <%= @hourly_temp_1[0].hour_19 %></p>
-  <p>20:00am: <%= @hourly_temp_1[0].hour_20 %></p>
-  <p>21:00am: <%= @hourly_temp_1[0].hour_21 %></p>
-  <p>22:00am: <%= @hourly_temp_1[0].hour_22 %></p>
-  <p>23:00am: <%= @hourly_temp_1[0].hour_23 %></p>
+<div>
+  <h3>Hourly Breakdown:</h3>
+  <div class="d-flex justify-content-center">
+    <div>
+      <h4>AM</h4>
+      <p>12:00am:--- <strong><%= @hourly_temp_1[0].hour_00 %></strong>°C</p>
+      <p>01:00am:--- <strong><%= @hourly_temp_1[0].hour_01 %></strong>°C</p>
+      <p>02:00am:--- <strong><%= @hourly_temp_1[0].hour_02 %></strong>°C</p>
+      <p>03:00am:--- <strong><%= @hourly_temp_1[0].hour_03 %></strong>°C</p>
+      <p>04:00am:--- <strong><%= @hourly_temp_1[0].hour_04 %></strong>°C</p>
+      <p>05:00am:--- <strong><%= @hourly_temp_1[0].hour_05 %></strong>°C</p>
+      <p>06:00am:--- <strong><%= @hourly_temp_1[0].hour_06 %></strong>°C</p>
+      <p>07:00am:--- <strong><%= @hourly_temp_1[0].hour_07 %></strong>°C</p>
+      <p>08:00am:--- <strong><%= @hourly_temp_1[0].hour_08 %></strong>°C</p>
+      <p>09:00am:--- <strong><%= @hourly_temp_1[0].hour_09 %></strong>°C</p>
+      <p>10:00am:--- <strong><%= @hourly_temp_1[0].hour_10 %></strong>°C</p>
+      <p>11:00am:--- <strong><%= @hourly_temp_1[0].hour_11 %></strong>°C</p>
+    </div>
 
-  <%
-=begin%>
- <strong></strong>
-  <p class="lead font-weight-bold">It's shaping up to be a <strong><%= @forecast.temp %></strong> one for <strong><%= @forecast.postcode %></strong> today (by your estimations). <%= @forecast.temp == 'cold' ? '❄️' : '☀️' %></p>
-  <p class="lead">We're expecting highs of up to <code style="color: red;"><%= @forecast.max_temp %>°C</code>, and lows down to <code style="color: blue;"><%= @forecast.min_temp %>°C</code>.</p>
-  <p class="lead">
-<%
-=end%>
-    <%= link_to "Reset", root_path, class: "btn btn-primary btn-lg" %>
-  </p>
+    <div class="mx-3">
+      <h4>PM</h4>
+      <p>12:00pm:--- <strong><%= @hourly_temp_1[0].hour_12 %></strong>°C</p>
+      <p>13:00pm:--- <strong><%= @hourly_temp_1[0].hour_13 %></strong>°C</p>
+      <p>14:00pm:--- <strong><%= @hourly_temp_1[0].hour_14 %></strong>°C</p>
+      <p>15:00pm:--- <strong><%= @hourly_temp_1[0].hour_15 %></strong>°C</p>
+      <p>16:00pm:--- <strong><%= @hourly_temp_1[0].hour_16 %></strong>°C</p>
+      <p>17:00pm:--- <strong><%= @hourly_temp_1[0].hour_17 %></strong>°C</p>
+      <p>18:00pm:--- <strong><%= @hourly_temp_1[0].hour_18 %></strong>°C</p>
+      <p>19:00pm:--- <strong><%= @hourly_temp_1[0].hour_19 %></strong>°C</p>
+      <p>20:00pm:--- <strong><%= @hourly_temp_1[0].hour_20 %></strong>°C</p>
+      <p>21:00pm:--- <strong><%= @hourly_temp_1[0].hour_21 %></strong>°C</p>
+      <p>22:00pm:--- <strong><%= @hourly_temp_1[0].hour_22 %></strong>°C</p>
+      <p>23:00pm:--- <strong><%= @hourly_temp_1[0].hour_23 %></strong>°C</p>
+    </div>
+  </div>
+</div>
+
+  <%= link_to "Reset", root_path, class: "btn btn-primary btn-lg" %>
 </div>
