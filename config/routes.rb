@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'forecasts#new'
   resources :forecasts, only: [:create, :show]
-  get 'forecasts/create'
+  
 end

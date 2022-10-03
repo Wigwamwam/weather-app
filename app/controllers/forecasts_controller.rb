@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'weatherapi/client'
 
 class ForecastsController < ApplicationController
   def new
@@ -8,11 +9,21 @@ class ForecastsController < ApplicationController
   def create
     @forecast = Forecast.new(forecast_params)
     if @forecast.valid?
-      @forecast.fetch_values
-      if @forecast.country.include?('UK')
-        @forecast.save
-        redirect_to forecast_path(@forecast)
-      end
+
+      response = Weatherapi::Client.new.fetch_weather(@forecast.postcode)
+      @forecast.set_from_weather_api(response)
+      @forecast.save
+      days = 0
+      # if API permitted forecast dates
+      # while days < 6 do
+        hourly_response = Weatherapi::Client.new.fetch_future_weather(@forecast.postcode, days)
+        @hourly = HourlyTemp.new
+        @hourly.forecast = @forecast
+        @hourly.hourly_weather_breakdown(hourly_response)
+        @hourly.save
+      #   days += 1
+      # end
+      redirect_to forecast_path(@forecast)
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,6 +31,7 @@ class ForecastsController < ApplicationController
 
   def show
     @forecast = Forecast.find(params[:id])
+    @hourly_temp_1 = HourlyTemp.where(forecast: @forecast)
   end
 
   private
